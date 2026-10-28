@@ -1,0 +1,32 @@
+{
+  "id": "ARC-FOUR-PROPERTY",
+  "title": "电子档案未做真实性/完整性/可用性/安全性检测（四性检测）",
+  "severity": "high",
+  "source": "《电子档案管理系统基本功能规定》（国档发〔2017〕2号）；《电子档案单套制管理一般要求》（DA/T 96-2022）",
+  "advice": "电子档案应有四性检测记录（真实性、完整性、可用性、安全性），至少包含校验和、格式合规、可读性验证与访问控制。配置或代码里应能看到四性检测入口。",
+  "check": {
+    "type": "file-pattern",
+    "pattern": "^(?![^\\n]*(?:真实性|完整性|可用性|安全性|四性|校验和|sha256))[^\\n]*(?:电子档案|electronic[ _-]?record|归档包)[^\\n]*$",
+    "flags": "gmi",
+    "wholeFile": true,
+    "exts": [
+      ".yml",
+      ".yaml",
+      ".json",
+      ".properties",
+      ".toml",
+      ".sql",
+      ".md",
+      ".txt",
+      ".java",
+      ".js",
+      ".ts",
+      ".py",
+      ".xml",
+      ".conf",
+      ".ini"
+    ],
+    "max": 20,
+    "when": "(?:电子档案|electronic[ _-]?record|归档包)"
+  }
+}

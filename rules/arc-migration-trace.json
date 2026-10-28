@@ -1,0 +1,32 @@
+{
+  "id": "ARC-MIGRATION-TRACE",
+  "title": "档案格式迁移/系统更换未留迁移记录与校验",
+  "severity": "medium",
+  "source": "《电子档案单套制管理一般要求》（DA/T 96-2022）；《数字档案室建设指南》",
+  "advice": "迁移前后应记录批次、源/目标格式、校验和与验收结论；否则无法证明迁移未损坏档案。",
+  "check": {
+    "type": "file-pattern",
+    "pattern": "^(?![^\\n]*(?:校验|sha256|验收|迁移记录))[^\\n]*(?:迁移|格式转换|转换格式)[^\\n]*$",
+    "flags": "gmi",
+    "wholeFile": true,
+    "exts": [
+      ".yml",
+      ".yaml",
+      ".json",
+      ".properties",
+      ".toml",
+      ".sql",
+      ".md",
+      ".txt",
+      ".java",
+      ".js",
+      ".ts",
+      ".py",
+      ".xml",
+      ".conf",
+      ".ini"
+    ],
+    "max": 20,
+    "when": "(?:迁移|转换格式|格式转换)"
+  }
+}
