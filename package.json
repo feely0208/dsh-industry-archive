@@ -1,6 +1,6 @@
 {
   "name": "@deepwhale-cn/dsh-industry-archive",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "档案行业专项体检：保管期限、电子档案四性检测、销毁审批、迁移留痕，别等检查才发现",
   "type": "module",
   "license": "MIT",

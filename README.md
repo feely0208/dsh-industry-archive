@@ -1,34 +1,38 @@
-# 财税行业专项体检（dsh-industry-tax）
+# 档案行业专项体检（@deepwhale-cn/dsh-industry-archive）
 
-财税行业多出来的那几项：发票与会计凭证保存期、税务数据出境、发票抬头与税号校验，别等稽查才发现。
+档案行业多出来的那几项：保管期限（永久/定期 30 年、10 年）、电子档案四性检测、销毁审批与清册、迁移留痕——别等检查才发现。
 
 ## 安装
 
 ```bash
-dsh plugin --profile web add @deepwhale-cn/dsh-industry-tax
+dsh plugin --profile web add @deepwhale-cn/dsh-industry-archive
 ```
 
-也可源码安装：`dsh plugin --profile web add github:feely0208/dsh-industry-tax`。
+也可源码安装：`dsh plugin --profile web add github:feely0208/dsh-industry-archive`。
 
 ## 用法
 
 ```bash
-dsh-tax ...   # （见下表规则）
+dsh-industry-archive --root ./archive-system     # 检查一个项目
+dsh-industry-archive --list-rules                # 列判据与出处
+dsh-industry-archive --html report.html          # 出 HTML 报告
 ```
 
-用 CLI 或直接让 Agent 调用 `industry-tax` 技能：给一个项目目录，输出命中项、法规出处与修复建议。
+也可以直接用「深鲸行业合规体检」面板的「档案」页签。
 
 ## 判据
 
 | 规则 | 查什么 |
 |---|---|
-| `TAX-ARCHIVE-RETENTION` | 会计凭证/账簿保存期低于 30 年（或财务报告未永久保存） |
-| `TAX-INVOICE-TITLE` | 开票信息缺纳税人识别号或抬头与主体不一致 |
-| `TAX-DATA-CROSS-BORDER` | 税务/财务数据出境未做安全评估或标准合同 |
-| `TAX-E-INVOICE-VERIFY` | 电子发票未做验真/重复报销校验 |
+| `ARC-RETENTION` | 保管期限：永久 / 定期 30 年、10 年 |
+| `ARC-FOUR-PROPERTY` | 电子档案四性检测（真实性/完整性/可用性/安全性） |
+| `ARC-DESTROY-APPROVAL` | 销毁审批与清册、监销记录 |
+| `ARC-MIGRATION-TRACE` | 迁移/格式转换的校验和与验收留痕 |
+
+每条判据都带法规名称与条款出处（档案法、DA/T 96-2022 等）与修复建议。
 
 ## 说明
 
 - 纯本地扫描，不上传代码与数据；
-- 规则与出处公开在 `rules/`，可自行增删；
+- 规则公开在 `rules/`，可自行增删；
 - 误报/漏报请提 Issue。
